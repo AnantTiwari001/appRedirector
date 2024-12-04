@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+  <button onclick="openApp()">Open App</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        console.log('dom load completed!')
+        openApp()
+    })
+    function openApp() {
+      var uri = `exp://192.168.100.28:8081/?url=${window.location.href}`;
+
+      // Create a dummy iframe to trigger the URI
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = uri;
+      document.body.appendChild(iframe);
+
+      // Set a timeout to redirect if the app is not opened
+      setTimeout(function() {
+        window.location = uri; // Fallback URL (Android example)
+      }, 2000);  // Adjust the timeout as needed
+    }
+  </script>
+</body>
+</html>
