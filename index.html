@@ -14,7 +14,7 @@
         openApp()
     })
     function openApp() {
-      var uri = `exp+abmi-react-native://?url=${window.location.href}`;
+      var uri = `exp+abmi-react-native://=${window.location.search}`;
 
       // Create a dummy iframe to trigger the URI
       var iframe = document.createElement("iframe");
